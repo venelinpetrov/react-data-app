@@ -1,0 +1,7 @@
+.x-wrapper {
+    padding: 10px;
+}
+.x-table-wrapper {
+    height: 400px;
+    overflow: auto;
+}
