@@ -1,10 +1,15 @@
 import React from 'react';
+import Pager from './Pager';
 
 function Grid(props) {
-    const data = props.data;
+    let data = props.data;
 
     function onRowClick(dataItem) {
         console.log(dataItem)
+    }
+
+    function handlePageClick({skip, take}) {
+        props.onPageChange({skip, take})
     }
 
     return (
@@ -20,9 +25,9 @@ function Grid(props) {
                     </thead>
                     <tbody>
                         {
-                            data.loading ?
+                            props.loading ?
                                 <tr><td colSpan="3">Loading...</td></tr>
-                                : data.customers.map(item => {
+                                : data.map(item => {
                                     return (
                                         <tr key={item.Id} onClick={onRowClick.bind(this, item)}>
                                             <td>{item.ContactName}</td>
@@ -36,6 +41,14 @@ function Grid(props) {
                     </tbody>
                 </table>
             </div>
+            <Pager
+                onPageClick={handlePageClick}
+                pageCount={props.total}
+                total={props.total}
+                skip={props.skip}
+                take={props.take}
+            />
+
         </div>
     )
 }
