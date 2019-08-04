@@ -5,7 +5,14 @@ function Pager(props) {
     return (
         <nav aria-label="Page navigation example">
             <ul className="pagination">
-                <li className="page-item">
+                <li
+                    className="page-item"
+                    onClick={() => {
+                        const skip = props.skip - 1;
+                        if (skip >= 0) {
+                            props.onPageClick({ skip, take: 10 });
+                        }
+                    }}>
                     <span className="page-link" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span className="sr-only">Previous</span>
@@ -23,7 +30,14 @@ function Pager(props) {
                     })
                 }
 
-                <li className="page-item">
+                <li
+                    className="page-item"
+                    onClick={() => {
+                        const skip = props.skip + 1;
+                        if (skip < pageCount) {
+                            props.onPageClick({ skip, take: 10 });
+                        }
+                    }}>
                     <span className="page-link" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
