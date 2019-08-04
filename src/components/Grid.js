@@ -12,10 +12,14 @@ function Grid(props) {
         props.onPageChange({skip, take})
     }
 
+    function handlePageSizeChange({take}) {
+        props.onPageSizeChange({take});
+    }
+
     return (
         <div className="x-wrapper">
             <div className="x-table-wrapper">
-                <table className="x-table table table-striped table-dark table-bordered table-hover">
+                <table className="x-table table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -41,14 +45,16 @@ function Grid(props) {
                     </tbody>
                 </table>
             </div>
-            <Pager
-                onPageClick={handlePageClick}
-                pageCount={props.total}
-                total={props.total}
-                skip={props.skip}
-                take={props.take}
-            />
-
+            {
+                props.loading ? '' : <Pager
+                    onPageSizeChange={handlePageSizeChange}
+                    onPageClick={handlePageClick}
+                    pageCount={props.total}
+                    total={props.total}
+                    skip={props.skip}
+                    take={props.take}
+                />
+            }
         </div>
     )
 }

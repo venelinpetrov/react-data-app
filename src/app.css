@@ -5,3 +5,11 @@
     height: 400px;
     overflow: auto;
 }
+.x-pager {
+    display: flex;
+}
+
+.x-page-size {
+    width: 70px;
+    margin-left: 15px;
+}

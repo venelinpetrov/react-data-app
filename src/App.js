@@ -36,6 +36,13 @@ function App() {
         })
     }
 
+    function onPageSizeChange({take}) {
+        setState({
+            ...state,
+            take
+        })
+    }
+
     return (
         <Grid
             data={state.data.slice(state.skip, state.take + state.skip)}
@@ -44,6 +51,7 @@ function App() {
             skip={state.skip}
             take={state.take}
             total={state.data.length}
+            onPageSizeChange={onPageSizeChange}
             onPageChange={onPageChange}
         />
     );

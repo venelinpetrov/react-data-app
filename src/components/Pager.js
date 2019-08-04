@@ -1,16 +1,16 @@
 import React from 'react';
 
 function Pager(props) {
-    const pageCount = parseInt(props.total / props.take);
+    const pageCount = parseInt(props.total / props.take) || 1;
     return (
-        <nav aria-label="Page navigation example">
-            <ul className="pagination">
+        <nav aria-label="Page navigation" className="x-pager">
+            <ul className="pagination pagination-dark">
                 <li
                     className="page-item"
                     onClick={() => {
                         const skip = props.skip - 1;
                         if (skip >= 0) {
-                            props.onPageClick({ skip, take: 10 });
+                            props.onPageClick({ skip, take: props.take });
                         }
                     }}>
                     <span className="page-link" aria-label="Previous">
@@ -23,7 +23,7 @@ function Pager(props) {
                         return (
                             <li
                                 key={i} className={"page-item " + (i === props.skip ? 'active' : '')}
-                                onClick={props.onPageClick.bind(null, {skip: i, take: 10})}>
+                                onClick={props.onPageClick.bind(null, {skip: i, take: props.take})}>
                                 <span className="page-link">{i + 1}</span>
                             </li>
                         )
@@ -35,7 +35,7 @@ function Pager(props) {
                     onClick={() => {
                         const skip = props.skip + 1;
                         if (skip < pageCount) {
-                            props.onPageClick({ skip, take: 10 });
+                            props.onPageClick({ skip, take: props.take });
                         }
                     }}>
                     <span className="page-link" aria-label="Next">
@@ -44,6 +44,11 @@ function Pager(props) {
                     </span>
                 </li>
             </ul>
+            <input
+                type="number"
+                className="x-page-size form-control"
+                value={props.take}
+                onChange={e => props.onPageSizeChange({take: +e.target.value})}/>
         </nav>
     )
 }
