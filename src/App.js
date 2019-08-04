@@ -1,59 +1,15 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Route, Switch } from 'react-router-dom';
+import Master from './pages/Master';
+import Details from './pages/Details';
 import './app.css';
 
-import Grid from './components/Grid';
 function App() {
-    const initialState = {
-        data: [],
-        skip: 0,
-        take: 10,
-        loading: true
-    };
-
-    const [state, setState] = useState(initialState);
-
-    useEffect(() => {
-        const getCustomers = async () => {
-            const {data} = await axios('http://northwind.servicestack.net/customers.json');
-
-            setState({
-                ...state,
-                data: data.Customers,
-                loading: false,
-            });
-        }
-
-        getCustomers();
-    }, []);
-
-    function onPageChange({skip, take}) {
-        setState({
-            ...state,
-            skip,
-            take,
-        })
-    }
-
-    function onPageSizeChange({take}) {
-        setState({
-            ...state,
-            take
-        })
-    }
-
     return (
-        <Grid
-            data={state.data.slice(state.skip, state.take + state.skip)}
-            loading={state.loading}
-            paging={true}
-            skip={state.skip}
-            take={state.take}
-            total={state.data.length}
-            onPageSizeChange={onPageSizeChange}
-            onPageChange={onPageChange}
-        />
+        <Switch>
+            <Route exact path="/" component={Master} />
+            <Route path="/details/:id" component={Details} />
+        </Switch>
     );
 }
 

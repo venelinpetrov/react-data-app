@@ -5,7 +5,7 @@ function Grid(props) {
     let data = props.data;
 
     function onRowClick(dataItem) {
-        console.log(dataItem)
+        props.onRowSelect({dataItem});
     }
 
     function handlePageClick({skip, take}) {
