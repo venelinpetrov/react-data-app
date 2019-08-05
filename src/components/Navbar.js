@@ -5,12 +5,18 @@ import AuthButton from './AuthButton';
 
 function Header() {
     return (
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <Link to="/" className="nav-item nav-link">Home</Link>
-                    <Link to="/admin" className="nav-item nav-link">Admin Panel</Link>
-                    <AuthButton className="nav-item nav-link align-self-end"/>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/admin" className="nav-link">Admin Panel</Link>
+                    </li>
+                    <li className="nav-item">
+                        <AuthButton className="nav-link"/>
+                    </li>
                 </div>
             </div>
         </nav>

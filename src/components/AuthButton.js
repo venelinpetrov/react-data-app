@@ -6,11 +6,11 @@ const AuthButton = withRouter(props => {
     const history = props.history;
     return (
         AuthService.isAuthenticated ? (
-            <span {...props} onClick={() => {
+            <span className={props.className} onClick={() => {
                 AuthService.signOut(() => history.push('/'))
             }}>Logout</span>
         ) : (
-            <Link to="/login" {...props}>Login</Link >
+            <Link to="/login" className={props.className}>Login</Link>
         )
 
     )
