@@ -3,36 +3,36 @@ import { useEffect, useState } from 'react';
 import { Grid, GridColumn } from '../components/Grid';
 import axios from 'axios';
 
-
 const Admin = () => {
     const initialState = {
         data: [],
         loading: true,
         selectedItem: null
-    }
+    };
 
     const [state, setState] = useState(initialState);
 
     useEffect(() => {
         const getOrders = async () => {
-
             const { data } = await axios.get('http://northwind.servicestack.net/orders.json');
+
             setState({
                 ...state,
                 data: data && data.Results && data.Results.map(item => item.Order),
                 loading: false
             });
-        }
+        };
 
         getOrders();
     }, []);
 
-    function handleRowSelect({dataItem}) {
+    function handleRowSelect({ dataItem }) {
         setState({
             ...state,
             selectedItem: dataItem
         });
     }
+
     return (
         <div className="container-fluid">
             <div className="row">

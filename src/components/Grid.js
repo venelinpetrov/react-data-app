@@ -43,7 +43,7 @@ const Grid = (props) => {
                 </table>
             </div>
             {
-                props.loading ? '' : <Pager
+                props.loading || !props.paging ? '' : <Pager
                     onPageSizeChange={handlePageSizeChange}
                     onPageClick={handlePageClick}
                     pageCount={props.total}

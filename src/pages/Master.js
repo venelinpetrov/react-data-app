@@ -52,7 +52,6 @@ const Master = withRouter(({history}) => {
         });
     }
     return (
-
         <Grid
             data={state.data.slice(state.skip, state.take + state.skip)}
             loading={state.loading}
