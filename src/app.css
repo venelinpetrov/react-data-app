@@ -13,3 +13,7 @@
     width: 70px;
     margin-left: 15px;
 }
+
+.nav-link.active {
+    color: blue !important;
+}
