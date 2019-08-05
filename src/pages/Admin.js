@@ -7,7 +7,7 @@ const Admin = () => {
     const initialState = {
         data: [],
         loading: true,
-        selectedItem: null
+        selectedRow: null
     };
 
     const [state, setState] = useState(initialState);
@@ -29,7 +29,7 @@ const Admin = () => {
     function handleRowSelect({ dataItem }) {
         setState({
             ...state,
-            selectedItem: dataItem
+            selectedRow: dataItem
         });
     }
 
@@ -43,14 +43,18 @@ const Admin = () => {
             </div>
             <div className="row">
                 <div className="col-md-6">
-                    <Grid data={state.data} loading={state.loading} onRowSelect={handleRowSelect}>
+                    <Grid
+                        data={state.data}
+                        loading={state.loading}
+                        selectedRow={state.selectedRow}
+                        onRowSelect={handleRowSelect}>
                         <GridColumn field="Id" />
                         <GridColumn field="CustomerId"/>
                     </Grid>
                 </div>
                 <div className="col-md-6">
-                    {state.selectedItem ? (
-                        Object.keys(state.selectedItem).map((key, i) => <div key={i}>{state.selectedItem[key]}</div>)
+                    {state.selectedRow ? (
+                        Object.keys(state.selectedRow).map((key, i) => <div key={i}>{state.selectedRow[key]}</div>)
                     ) : (
                         <div>Select item...</div>
                     )}

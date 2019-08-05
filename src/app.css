@@ -1,12 +1,17 @@
 .x-wrapper {
     padding: 10px;
 }
-.x-table-wrapper {
+.x-grid-wrapper {
     height: 400px;
     overflow: auto;
 }
 .x-pager {
     display: flex;
+}
+
+.x-grid .-selected td{
+    background: lightseagreen;
+    color: white;
 }
 
 .x-page-size {
@@ -15,5 +20,5 @@
 }
 
 .nav-link.active {
-    color: blue !important;
+    color: dodgerblue !important;
 }

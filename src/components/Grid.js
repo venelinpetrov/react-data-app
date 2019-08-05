@@ -18,8 +18,8 @@ const Grid = (props) => {
 
     return (
         <div className="x-wrapper">
-            <div className="x-table-wrapper">
-                <table className="x-table table table-striped table-bordered table-hover">
+            <div className="x-grid-wrapper">
+                <table className="x-grid table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             {props.children.map(({props}) => {
@@ -33,7 +33,7 @@ const Grid = (props) => {
                                 <tr><td colSpan="3">Loading...</td></tr>
                                 : data.map(item => {
                                     return (
-                                        <tr key={item.Id} onClick={handleRowClick.bind(this, item)}>
+                                        <tr key={item.Id} onClick={handleRowClick.bind(this, item)} className={item === props.selectedRow ? '-selected': ''}>
                                             {props.children.map(({ props }) => <td key={props.field}>{item[props.field]}</td>)}
                                         </tr>
                                     )
