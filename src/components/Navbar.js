@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './AuthButton';
 import AuthButton from './AuthButton';
 
-const Header = withRouter(({match, location}) => {
-    console.log(match, location)
+const Header = (() => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">

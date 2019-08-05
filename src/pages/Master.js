@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import {withRouter } from 'react-router-dom';
 import axios from 'axios';
-import Grid from '../components/Grid';
+import { Grid, GridColumn } from '../components/Grid';
 
 const Master = withRouter(({history}) => {
     const initialState = {
@@ -63,7 +63,11 @@ const Master = withRouter(({history}) => {
             onPageSizeChange={onPageSizeChange}
             onPageChange={onPageChange}
             onRowSelect={handleRowSelect}
-        />
+        >
+            <GridColumn field="ContactName" />
+            <GridColumn field="Phone" />
+            <GridColumn field="Address" />
+        </Grid>
     )
 });
 

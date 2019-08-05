@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Pager(props) {
+const Pager = (props) => {
     const pageCount = parseInt(props.total / props.take) || 1;
     return (
         <nav aria-label="Page navigation" className="x-pager">
@@ -51,6 +51,6 @@ function Pager(props) {
                 onChange={e => props.onPageSizeChange({take: +e.target.value})}/>
         </nav>
     )
-}
+};
 
 export default Pager;

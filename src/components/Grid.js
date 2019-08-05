@@ -1,10 +1,10 @@
 import React from 'react';
 import Pager from './Pager';
 
-function Grid(props) {
+const Grid = (props) => {
     let data = props.data;
 
-    function onRowClick(dataItem) {
+    function handleRowClick(dataItem) {
         props.onRowSelect({dataItem});
     }
 
@@ -22,9 +22,9 @@ function Grid(props) {
                 <table className="x-table table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Number</th>
-                            <th>Address</th>
+                            {props.children.map(({props}) => {
+                                return <th key={props.field}>{props.title || props.field}</th>
+                            })}
                         </tr>
                     </thead>
                     <tbody>
@@ -33,15 +33,12 @@ function Grid(props) {
                                 <tr><td colSpan="3">Loading...</td></tr>
                                 : data.map(item => {
                                     return (
-                                        <tr key={item.Id} onClick={onRowClick.bind(this, item)}>
-                                            <td>{item.ContactName}</td>
-                                            <td>{item.Phone}</td>
-                                            <td>{item.Address}</td>
+                                        <tr key={item.Id} onClick={handleRowClick.bind(this, item)}>
+                                            {props.children.map(({ props }) => <td key={props.field}>{item[props.field]}</td>)}
                                         </tr>
                                     )
                                 })
                         }
-
                     </tbody>
                 </table>
             </div>
@@ -57,6 +54,8 @@ function Grid(props) {
             }
         </div>
     )
-}
+};
 
-export default Grid;
+const GridColumn = () => { }
+
+export { Grid, GridColumn };

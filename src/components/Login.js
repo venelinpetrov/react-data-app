@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthService from '../services/AuthService';
 
-function Login({history, location}) {
+const Login = ({history, location}) => {
     let { from } = location.state || { from: {pathname: '/'}};
     return (
         <div>
@@ -14,6 +14,6 @@ function Login({history, location}) {
             <button className="btn btn-secondary" onClick={() => history.push('/')}>Cancel</button>
         </div>
     )
-}
+};
 
 export default Login;

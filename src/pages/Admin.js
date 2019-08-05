@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Admin() {
+const Admin = () => {
     return (
         <div>
             <h2>Admin</h2>
