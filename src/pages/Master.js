@@ -16,11 +16,13 @@ const Master = withRouter(({history}) => {
 
     useEffect(() => {
         const getCustomers = async () => {
-            const { data } = await axios('http://northwind.servicestack.net/customers.json');
+            //
+            const { data } = await axios('https://5d4b1f8000dbb1001487986b.mockapi.io/api/v1/customers');
+            // const { data } = await axios('http://northwind.servicestack.net/customers.json');
 
             setState({
                 ...state,
-                data: data.Customers,
+                data: data,
                 loading: false,
             });
         }

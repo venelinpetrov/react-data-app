@@ -15,6 +15,8 @@ const Admin = () => {
     useEffect(() => {
         const getOrders = async () => {
             const { data } = await axios.get('http://northwind.servicestack.net/orders.json');
+            const res = await axios.post('http://localhost:4000/dolphins', {someField: 'some value'});
+            console.log(res);
 
             setState({
                 ...state,
