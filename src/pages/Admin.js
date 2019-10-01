@@ -14,13 +14,11 @@ const Admin = () => {
 
     useEffect(() => {
         const getOrders = async () => {
-            const { data } = await axios.get('http://northwind.servicestack.net/orders.json');
-            const res = await axios.post('http://localhost:4000/dolphins', {someField: 'some value'});
-            console.log(res);
-
+            const { data } = await axios.get('/orders.json');
+            debugger;
             setState({
                 ...state,
-                data: data && data.Results && data.Results.map(item => item.Order),
+                data: data && data.results && data.results.map(item => item.order),
                 loading: false
             });
         };
@@ -50,8 +48,8 @@ const Admin = () => {
                         loading={state.loading}
                         selectedRow={state.selectedRow}
                         onRowSelect={handleRowSelect}>
-                        <GridColumn field="Id" />
-                        <GridColumn field="CustomerId"/>
+                        <GridColumn field="id" />
+                        <GridColumn field="customerId"/>
                     </Grid>
                 </div>
                 <div className="col-md-6">

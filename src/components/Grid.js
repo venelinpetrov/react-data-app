@@ -33,7 +33,7 @@ const Grid = (props) => {
                                 <tr><td colSpan="3">Loading...</td></tr>
                                 : data.map(item => {
                                     return (
-                                        <tr key={item.Id} onClick={handleRowClick.bind(this, item)} className={item === props.selectedRow ? '-selected': ''}>
+                                        <tr key={item.id} onClick={handleRowClick.bind(this, item)} className={item === props.selectedRow ? '-selected': ''}>
                                             {props.children.map(({ props }) => <td key={props.field}>{item[props.field]}</td>)}
                                         </tr>
                                     )
