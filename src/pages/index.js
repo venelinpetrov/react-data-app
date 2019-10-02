@@ -1,10 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { Grid, GridColumn } from '../components/Grid';
 
-const Master = withRouter(({history}) => {
+const Master = ({history}) => {
     const initialState = {
         data: [],
         skip: 0,
@@ -16,9 +15,7 @@ const Master = withRouter(({history}) => {
 
     useEffect(() => {
         const getCustomers = async () => {
-            //
             const { data } = await axios('https://5d4b1f8000dbb1001487986b.mockapi.io/api/v1/customers');
-            // const { data } = await axios('http://northwind.servicestack.net/customers.json');
 
             setState({
                 ...state,
@@ -70,6 +67,6 @@ const Master = withRouter(({history}) => {
             <GridColumn field="Address" />
         </Grid>
     )
-});
+};
 
 export default Master;

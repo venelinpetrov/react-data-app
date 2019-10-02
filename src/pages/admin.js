@@ -15,7 +15,7 @@ const Admin = () => {
     useEffect(() => {
         const getOrders = async () => {
             const { data } = await axios.get('/orders.json');
-            debugger;
+
             setState({
                 ...state,
                 data: data && data.results && data.results.map(item => item.order),

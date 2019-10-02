@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import Link from 'next/link';
 import AuthService from '../services/AuthService';
 
-const AuthButton = withRouter(props => {
+const AuthButton = props => {
     const history = props.history;
     return (
         AuthService.isAuthenticated ? (
@@ -10,10 +10,12 @@ const AuthButton = withRouter(props => {
                 AuthService.signOut(() => history.push('/'))
             }}>Logout</span>
         ) : (
-            <Link to="/login" className={props.className}>Login</Link>
+            <Link href="/login">
+                <a className={props.className}>Login</a>
+            </Link>
         )
 
     )
-});
+};
 
 export default AuthButton;

@@ -1,6 +1,4 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './AuthButton';
+import Link from 'next/link';
 import AuthButton from './AuthButton';
 
 const Header = (() => {
@@ -8,9 +6,13 @@ const Header = (() => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
-                    <NavLink to="/admin" className="nav-link" activeClassName="active">Admin Panel</NavLink>
-                    <AuthButton className="nav-link" activeClassName="active"/>
+                    <Link href="/">
+                        <a>Home</a>
+                    </Link>
+                    <Link href="/admin">
+                        <a>Admin Panel</a>
+                    </Link>
+                    <AuthButton />
                 </div>
             </div>
         </nav>

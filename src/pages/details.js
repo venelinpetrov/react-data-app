@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-const Details = withRouter(({location, history}) => {
+const Details = ({location, history}) => {
     const item = location.state.payload;
     const [state, setState] = useState(item);
 
@@ -48,6 +47,6 @@ const Details = withRouter(({location, history}) => {
             <button onClick={() => history.goBack()}>Back</button>
         </div>
     )
-});
+};
 
 export default Details;
