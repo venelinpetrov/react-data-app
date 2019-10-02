@@ -1,10 +1,25 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Details = ({location, history}) => {
-    const item = location.state.payload;
-    const [state, setState] = useState(item);
+const Details = ({ query }) => {
+    const initialState = {
+        customer: {},
+        loading: true
+    };
+    const [state, setState] = useState(initialState);
+
+    useEffect(() => {
+        const getOrders = async () => {
+            const { data } = await axios.get(`http://northwind.netcore.io/customers/${query.id}.json`);
+
+            setState({
+                customer: data.customer,
+                loading: false
+            });
+        };
+
+        getOrders();
+    }, []);
 
     function handleInputChange(e) {
         setState({
@@ -25,7 +40,7 @@ const Details = ({location, history}) => {
             <form onSubmit={handleFormSubmit}>
                 <ul>
                     {
-                        Object.keys(item).map((key, i) => {
+                        Object.keys(state.customer).map((key, i) => {
                             return (
                                 <li key={i}>
                                     <label>
@@ -33,7 +48,7 @@ const Details = ({location, history}) => {
                                         <input
                                             type="text"
                                             name={key}
-                                            value={state[key]}
+                                            defaultValue={state.customer[key]}
                                             onChange={handleInputChange}
                                         />
                                     </label>

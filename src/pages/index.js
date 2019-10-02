@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import { Grid, GridColumn } from '../components/Grid';
 
@@ -43,10 +43,10 @@ const Master = ({history}) => {
     }
 
     function handleRowSelect({dataItem}) {
-        history.push({
-            pathname: `/details/${dataItem.Id}`,
-            state: {
-                payload: dataItem
+        Router.push({
+            pathname: `/details`,
+            query: {
+                id: dataItem.Id
             }
         });
     }
