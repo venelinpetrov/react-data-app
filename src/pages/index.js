@@ -3,7 +3,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import { Grid, GridColumn } from '../components/Grid';
 
-const Master = ({history}) => {
+const Master = () => {
     const initialState = {
         data: [],
         skip: 0,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 
 const Details = ({ query }) => {
@@ -59,7 +60,7 @@ const Details = ({ query }) => {
                 </ul>
                 <button>Submit</button>
             </form>
-            <button onClick={() => history.goBack()}>Back</button>
+            <button onClick={() => Router.back()}>Back</button>
         </div>
     )
 };
